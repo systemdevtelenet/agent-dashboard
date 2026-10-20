@@ -35,6 +35,12 @@ export default function SidebarProfile({ name, role }: { name?: string; role?: s
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [confirmOpen, signingOut]);
 
+  useEffect(() => {
+    const openConfirmation = () => { setSignOutError(''); setConfirmOpen(true); };
+    window.addEventListener('open-logout-confirmation', openConfirmation);
+    return () => window.removeEventListener('open-logout-confirmation', openConfirmation);
+  }, []);
+
   const initials = profileName?.trim().split(/\s+/).filter(Boolean).slice(0, 2).map(part => part[0]).join('').toUpperCase() || 'AG';
 
   async function signOut() {

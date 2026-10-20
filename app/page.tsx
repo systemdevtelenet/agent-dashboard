@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import SidebarProfile from '@/components/sidebar-profile';
 import TopbarDatePicker from '@/components/topbar-date-picker';
+import TopbarProfileMenu from '@/components/topbar-profile-menu';
 
 const notices = [
   { title: 'Attendance recorded', body: 'Your check-in was saved for today.', time: '9:02 AM', icon: 'check' },
@@ -87,7 +88,7 @@ export default function Dashboard() {
               {notices.map(item => <div className="notification-menu-row" key={item.title}><span className="notification-symbol"><Bell /></span><div><strong>{item.title}</strong><p>{item.body}</p><time>{item.time}</time></div></div>)}
             </div>}
           </div>
-          <button className="topbar-user" type="button" aria-label="Open profile" onClick={() => document.getElementById('profile')?.scrollIntoView({ behavior: 'smooth' })}><UserRound /></button>
+          <TopbarProfileMenu name="Nonie May Elimon" role="Agent" />
         </div>
       </header>
 

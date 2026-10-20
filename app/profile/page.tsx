@@ -3,6 +3,7 @@ import {
 } from 'lucide-react';
 import SidebarProfile from '@/components/sidebar-profile';
 import TopbarDatePicker from '@/components/topbar-date-picker';
+import TopbarProfileMenu from '@/components/topbar-profile-menu';
 
 const profile = {
   name: 'Nonie May Elimon',
@@ -34,7 +35,7 @@ export default function ProfilePage() {
       <div className="sidebar-bottom"><SidebarProfile name={profile.name} role={profile.role} /></div>
     </aside>
     <main className="main-panel">
-      <header className="topbar"><div className="topbar-title">Agent Workspace</div><div className="topbar-actions"><label className="global-search"><Search /><input type="search" placeholder="Search attendance, schedule, or notices..." aria-label="Search dashboard" /></label><TopbarDatePicker /><a className="topbar-icon" href="/#notifications" aria-label="Notifications"><Bell /></a><span className="topbar-user" aria-label="Employee profile"><UserRound /></span></div></header>
+      <header className="topbar"><div className="topbar-title">Agent Workspace</div><div className="topbar-actions"><label className="global-search"><Search /><input type="search" placeholder="Search attendance, schedule, or notices..." aria-label="Search dashboard" /></label><TopbarDatePicker /><a className="topbar-icon" href="/#notifications" aria-label="Notifications"><Bell /></a><TopbarProfileMenu name={profile.name} role={profile.role} /></div></header>
       <div className="dashboard-content profile-page-content">
         <section className="page-heading"><div><div className="eyebrow">WORKSPACE / PERSONAL INFORMATION</div><h1>My profile</h1><p>Review your employee information and current work assignment.</p></div></section>
         <section className="panel-card profile-hero-card">

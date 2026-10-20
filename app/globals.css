@@ -127,6 +127,25 @@ a { color: inherit; text-decoration: none; }
 .topbar-icon i { width: 6px; height: 6px; position: absolute; top: 7px; right: 7px; border: 1px solid #fff; border-radius: 50%; background: #d9a632; }
 .topbar-user { border-color: #d7e2ee; color: var(--brand); background: #edf4fa; }
 .topbar-user svg { width: 17px; }
+.topbar-profile-anchor { position: relative; z-index: 30; flex: 0 0 auto; }
+.topbar-profile-anchor > .topbar-user { width: 38px; height: 38px; border: 0; color: #fff; background: #285f91; box-shadow: 0 3px 8px rgba(31,74,112,.2); font-size: 11px; font-weight: 750; }
+.topbar-profile-anchor > .topbar-user:hover, .topbar-profile-anchor > .topbar-user[aria-expanded="true"] { background: #204f7b; }
+.topbar-profile-menu { width: 236px; position: absolute; top: calc(100% + 10px); right: 0; padding: 12px 0 7px; border: 1px solid #e1e8f0; border-radius: 14px; color: #17283e; background: #fff; box-shadow: 0 15px 38px rgba(27,49,74,.18); }
+.topbar-profile-summary { display: flex; align-items: center; gap: 10px; padding: 0 13px 9px; }
+.topbar-profile-avatar { width: 32px; height: 32px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; color: #fff; background: #285f91; font-size: 9px; font-weight: 750; }
+.topbar-profile-identity { min-width: 0; display: grid; gap: 2px; }
+.topbar-profile-identity strong, .topbar-profile-identity small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.topbar-profile-identity strong { color: #1d2b3e; font-size: 10px; font-weight: 750; text-transform: uppercase; }
+.topbar-profile-identity small { color: #8090a4; font-size: 9px; }
+.topbar-profile-role { width: max-content; max-width: calc(100% - 26px); margin: 0 13px 8px; padding: 4px 8px; overflow: hidden; border: 1px solid #cbdceb; border-radius: 15px; color: #28689f; background: #f3f7fb; font-size: 8px; font-weight: 750; letter-spacing: .35px; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.topbar-profile-divider { height: 1px; margin: 7px 0; background: #edf1f5; }
+.topbar-profile-item { width: 100%; min-height: 35px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border: 0; color: #26384e; background: transparent; text-align: left; font-size: 11px; font-weight: 500; cursor: pointer; }
+.topbar-profile-item:hover { background: #f5f8fb; }
+.topbar-profile-item > svg { width: 15px; height: 15px; flex: 0 0 auto; color: #8194aa; stroke-width: 1.8; }
+.topbar-profile-item.theme-item small { margin-left: auto; color: #8194aa; font-size: 8px; font-weight: 700; }
+.topbar-profile-item.logout-menu-item { color: #e3212e; font-weight: 650; }
+.topbar-profile-item.logout-menu-item > svg { color: #e3212e; }
+.topbar-profile-item.logout-menu-item:hover { background: #fff4f4; }
 .notification-anchor { position: relative; }
 .notification-menu { width: 310px; position: absolute; top: 46px; right: -44px; padding: 14px; border: 1px solid var(--line); border-radius: 13px; background: #fff; box-shadow: 0 16px 42px rgba(32,58,84,.15); }
 .notification-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 9px; border-bottom: 1px solid #edf1f5; font-size: 11px; }
@@ -354,6 +373,20 @@ a { color: inherit; text-decoration: none; }
 .profile-field strong { overflow: hidden; color: #364d64; font-size: 10px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .profile-page-note { margin: 11px 0 0; color: #91a0af; font-size: 8px; }
 
+html[data-theme="dark"] { --ink: #e5edf5; --muted: #a6b6c8; --line: #334458; --canvas: #111b27; --brand-light: #1d344a; --card-shadow: 0 2px 12px rgba(0,0,0,.18); color-scheme: dark; }
+html[data-theme="dark"] body { color: var(--ink); background: var(--canvas); }
+html[data-theme="dark"] .main-panel, html[data-theme="dark"] .dashboard-content { background: var(--canvas); }
+html[data-theme="dark"] .topbar, html[data-theme="dark"] .panel-card, html[data-theme="dark"] .summary-card, html[data-theme="dark"] .time-panel, html[data-theme="dark"] .profile-hero-card, html[data-theme="dark"] .profile-details-card { border-color: var(--line); color: var(--ink); background: #192635; }
+html[data-theme="dark"] .topbar-title, html[data-theme="dark"] .page-heading h1, html[data-theme="dark"] .section-heading h2, html[data-theme="dark"] .profile-hero-copy h2 { color: #edf4fb; }
+html[data-theme="dark"] .page-heading p, html[data-theme="dark"] .section-heading p, html[data-theme="dark"] .profile-hero-copy p { color: #a5b6c9; }
+html[data-theme="dark"] .global-search, html[data-theme="dark"] .compact-select, html[data-theme="dark"] .topbar-date-trigger { border-color: var(--line); color: #d6e2ef; background: #1c2b3b; }
+html[data-theme="dark"] .topbar-profile-menu { border-color: #34485d; color: #e5edf5; background: #192635; }
+html[data-theme="dark"] .topbar-profile-identity strong, html[data-theme="dark"] .topbar-profile-item { color: #e0e9f3; }
+html[data-theme="dark"] .topbar-profile-divider { background: #304154; }
+html[data-theme="dark"] .topbar-profile-item:hover { background: #24364a; }
+html[data-theme="dark"] .topbar-profile-item.logout-menu-item { color: #ff727b; }
+html[data-theme="dark"] .profile-data-card, html[data-theme="dark"] .time-metric, html[data-theme="dark"] .attendance-highlight, html[data-theme="dark"] .schedule-card, html[data-theme="dark"] .work-record-card { border-color: var(--line); color: var(--ink); background: #1c2b3b; }
+
 @media (max-width: 1100px) {
   .dashboard-shell { grid-template-columns: 230px minmax(0,1fr); }
   .sidebar { padding-inline: 11px; }
@@ -389,6 +422,8 @@ a { color: inherit; text-decoration: none; }
   .topbar-date-trigger i, .topbar-date-trigger svg:nth-of-type(2), .topbar-date-trigger span:nth-of-type(2) { display: none; }
   .calendar-popover { right: -38px; width: min(300px,calc(100vw - 20px)); }
   .topbar-icon, .topbar-user { width: 31px; height: 31px; }
+  .topbar-profile-anchor > .topbar-user { width: 31px; height: 31px; font-size: 9px; }
+  .topbar-profile-menu { right: -2px; width: min(236px,calc(100vw - 20px)); }
   .notification-menu { width: min(300px,calc(100vw - 26px)); right: -70px; }
   .dashboard-content { padding: 18px 12px 22px; }
   .page-heading { align-items: flex-start; margin-bottom: 14px; }

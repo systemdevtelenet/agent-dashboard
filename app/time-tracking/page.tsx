@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 import SidebarProfile from '@/components/sidebar-profile';
 import TopbarDatePicker from '@/components/topbar-date-picker';
+import TopbarProfileMenu from '@/components/topbar-profile-menu';
 import { getTimeTrackingData, parseTimestamp, prettyDuration, punchLabel } from '@/lib/time-tracking';
 
 export const dynamic = 'force-dynamic';
@@ -60,7 +61,7 @@ export default async function TimeTrackingPage() {
           <label className="global-search"><Search /><input type="search" placeholder="Search attendance, schedule, or notices..." aria-label="Search dashboard" /></label>
           <TopbarDatePicker />
           <a className="topbar-icon" href="/#notifications" aria-label="Notifications"><Bell /></a>
-          <span className="topbar-user" aria-label="Employee profile"><UserRound /></span>
+          <TopbarProfileMenu name="Nonie May Elimon" role="Agent" />
         </div>
       </header>
 
