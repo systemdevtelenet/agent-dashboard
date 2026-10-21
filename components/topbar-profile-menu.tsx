@@ -16,7 +16,9 @@ export default function TopbarProfileMenu({ name = 'Agent', role = 'Employee' }:
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => setEmail(data.user?.email ?? '')).catch(() => undefined);
     const savedTheme = window.localStorage.getItem('agent-workspace-theme');
-    const isDark = savedTheme === 'dark';
+    const isDark = savedTheme === 'system'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : savedTheme === 'dark';
     setDark(isDark);
     document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
   }, []);
@@ -56,7 +58,7 @@ export default function TopbarProfileMenu({ name = 'Agent', role = 'Employee' }:
       <div className="topbar-profile-divider" />
       <Link className="topbar-profile-item" href="/profile" role="menuitem" onClick={() => setOpen(false)}><UserRound /><span>My Profile</span></Link>
       <a className="topbar-profile-item" href="/#help" role="menuitem" onClick={() => setOpen(false)}><CircleHelp /><span>Help &amp; Support</span></a>
-      <a className="topbar-profile-item" href="/#settings" role="menuitem" onClick={() => setOpen(false)}><Settings /><span>Settings</span></a>
+      <Link className="topbar-profile-item" href="/settings" role="menuitem" onClick={() => setOpen(false)}><Settings /><span>Settings</span></Link>
       <button className="topbar-profile-item theme-item" type="button" role="menuitem" onClick={toggleTheme}>{dark ? <Sun /> : <Moon />}<span>{dark ? 'Light Mode' : 'Dark Mode'}</span><small>{dark ? 'DARK' : 'LIGHT'}</small></button>
       <div className="topbar-profile-divider" />
       <button className="topbar-profile-item logout-menu-item" type="button" role="menuitem" onClick={requestLogout}><LogOut /><span>Logout</span></button>

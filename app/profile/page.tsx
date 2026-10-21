@@ -1,7 +1,8 @@
 import {
-  Activity, Bell, CalendarDays, Clock3, LayoutDashboard, Menu, Search, UserRound,
+  Activity, Bell, CalendarDays, Clock3, Search, UserRound,
 } from 'lucide-react';
-import SidebarProfile from '@/components/sidebar-profile';
+import AgentSidebar from '@/components/agent-sidebar';
+import AgentSidebarToggle from '@/components/agent-sidebar-toggle';
 import TopbarDatePicker from '@/components/topbar-date-picker';
 import TopbarProfileMenu from '@/components/topbar-profile-menu';
 
@@ -22,20 +23,9 @@ function ProfileField({ label, value }: { label: string; value: string }) {
 
 export default function ProfilePage() {
   return <div className="dashboard-shell">
-    <aside className="sidebar">
-      <div className="sidebar-brand-row"><a className="brand" href="/" aria-label="Agent Workspace home"><span className="brand-emblem">CTNP</span><span className="brand-copy"><strong>Cebu Tele-Net</strong><small>EMPLOYEE WORKSPACE</small></span></a><span className="sidebar-collapse"><Menu /></span></div>
-      <div className="sidebar-label">WORKSPACE</div>
-      <nav className="sidebar-nav" aria-label="Main navigation">
-        <a className="sidebar-link" href="/"><LayoutDashboard /><span>Dashboard</span></a>
-        <a className="sidebar-link" href="/time-tracking"><Clock3 /><span>Time Tracking</span></a>
-        <a className="sidebar-link" href="/#attendance"><CalendarDays /><span>My attendance</span></a>
-        <a className="sidebar-link" href="/#schedule"><Activity /><span>My schedule</span></a>
-        <a className="sidebar-link active" href="/profile" aria-current="page"><UserRound /><span>Personal information</span></a>
-      </nav>
-      <div className="sidebar-bottom"><SidebarProfile name={profile.name} role={profile.role} /></div>
-    </aside>
+    <AgentSidebar activePage="profile" />
     <main className="main-panel">
-      <header className="topbar"><div className="topbar-title">Agent Workspace</div><div className="topbar-actions"><label className="global-search"><Search /><input type="search" placeholder="Search attendance, schedule, or notices..." aria-label="Search dashboard" /></label><TopbarDatePicker /><a className="topbar-icon" href="/#notifications" aria-label="Notifications"><Bell /></a><TopbarProfileMenu name={profile.name} role={profile.role} /></div></header>
+      <header className="topbar"><AgentSidebarToggle /><div className="topbar-actions"><label className="global-search"><Search /><input type="search" placeholder="Search attendance, schedule, or notices..." aria-label="Search dashboard" /></label><TopbarDatePicker /><a className="topbar-icon" href="/#notifications" aria-label="Notifications"><Bell /></a><TopbarProfileMenu name={profile.name} role={profile.role} /></div></header>
       <div className="dashboard-content profile-page-content">
         <section className="page-heading"><div><div className="eyebrow">WORKSPACE / PERSONAL INFORMATION</div><h1>My profile</h1><p>Review your employee information and current work assignment.</p></div></section>
         <section className="panel-card profile-hero-card">
